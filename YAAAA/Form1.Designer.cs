@@ -30,6 +30,7 @@
         {
             this.FullscreenButton = new System.Windows.Forms.Button();
             this.SelectAreaButton = new System.Windows.Forms.Button();
+            this.PrimaryScreenResLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // FullscreenButton
@@ -50,17 +51,28 @@
             this.SelectAreaButton.Text = "Select Area";
             this.SelectAreaButton.UseVisualStyleBackColor = true;
             // 
+            // PrimaryScreenResLabel
+            // 
+            this.PrimaryScreenResLabel.AutoSize = true;
+            this.PrimaryScreenResLabel.Location = new System.Drawing.Point(12, 50);
+            this.PrimaryScreenResLabel.Name = "PrimaryScreenResLabel";
+            this.PrimaryScreenResLabel.Size = new System.Drawing.Size(38, 15);
+            this.PrimaryScreenResLabel.TabIndex = 2;
+            this.PrimaryScreenResLabel.Text = "PrimaryScreenResLabel";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(187, 49);
+            this.ClientSize = new System.Drawing.Size(183, 74);
+            this.Controls.Add(this.PrimaryScreenResLabel);
             this.Controls.Add(this.SelectAreaButton);
             this.Controls.Add(this.FullscreenButton);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "YAAAA";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -68,5 +80,6 @@
 
         private Button FullscreenButton;
         private Button SelectAreaButton;
+        private Label PrimaryScreenResLabel;
     }
 }

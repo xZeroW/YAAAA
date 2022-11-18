@@ -5,6 +5,8 @@ namespace YAAAA
         public Form1()
         {
             InitializeComponent();
+            PrimaryScreenResLabel.Text = Config.PrimaryMonitorResolution.ToString();
         }
+
     }
 }

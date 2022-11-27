@@ -41,6 +41,7 @@
             this.FullscreenButton.TabIndex = 0;
             this.FullscreenButton.Text = "Fullscreen";
             this.FullscreenButton.UseVisualStyleBackColor = true;
+            this.FullscreenButton.Click += new System.EventHandler(this.FullscreenButton_Click);
             // 
             // SelectAreaButton
             // 
@@ -56,7 +57,7 @@
             this.PrimaryScreenResLabel.AutoSize = true;
             this.PrimaryScreenResLabel.Location = new System.Drawing.Point(12, 50);
             this.PrimaryScreenResLabel.Name = "PrimaryScreenResLabel";
-            this.PrimaryScreenResLabel.Size = new System.Drawing.Size(38, 15);
+            this.PrimaryScreenResLabel.Size = new System.Drawing.Size(129, 15);
             this.PrimaryScreenResLabel.TabIndex = 2;
             this.PrimaryScreenResLabel.Text = "PrimaryScreenResLabel";
             // 

@@ -1,11 +1,11 @@
-﻿namespace YAAAA
+﻿using System.Runtime.InteropServices;
+
+namespace YAAAA
 {
     static class Config
     {
         static public Rectangle PrimaryMonitorResolution { get; } = Screen.PrimaryScreen.Bounds;
-        // TODO: Get current OS and use proper path
-        static public string SaveFolder { get; private set; } = @"C:\Temp\";
-
+        static public string SaveFolder { get; private set; } = RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ? @"~/Pictures" : @"C:\Temp\";
         /// <summary>
         /// Reads config.ini
         /// </summary>

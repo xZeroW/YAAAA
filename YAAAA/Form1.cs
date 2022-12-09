@@ -1,6 +1,4 @@
-using System.Diagnostics;
 using System.Drawing.Imaging;
-using System.Text.RegularExpressions;
 
 namespace YAAAA
 {
@@ -14,14 +12,19 @@ namespace YAAAA
 
         private void FullscreenButton_Click(object sender, EventArgs e)
         {
-            if (!Directory.Exists(Config.SaveFolder)) {
-                Directory.CreateDirectory(Config.SaveFolder);
-            }
+
             Bitmap bitmap = new Bitmap(Config.PrimaryMonitorResolution.Width,
                                    Config.PrimaryMonitorResolution.Height);
             Graphics graphics = Graphics.FromImage(bitmap as Image);
             graphics.CopyFromScreen(0, 0, 0, 0, bitmap.Size);
             bitmap.Save(Config.SaveFolder + Guid.NewGuid() + ".jpg", ImageFormat.Jpeg);
+        }
+
+        private void SelectAreaButton_Click(object sender, EventArgs e)
+        {
+
+            Selector selector = new Selector();
+            //selector.Form.
         }
     }
 }

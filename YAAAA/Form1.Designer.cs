@@ -51,6 +51,7 @@
             this.SelectAreaButton.TabIndex = 1;
             this.SelectAreaButton.Text = "Select Area";
             this.SelectAreaButton.UseVisualStyleBackColor = true;
+            this.SelectAreaButton.Click += new System.EventHandler(this.SelectAreaButton_Click);
             // 
             // PrimaryScreenResLabel
             // 

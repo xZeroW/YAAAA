@@ -1,17 +1,14 @@
-﻿using System.Diagnostics;
-
-namespace YAAAA
+﻿namespace YAAAA
 {
     internal class Selector
     {
-        private SelectForm Form = new SelectForm()
+        private SelectForm Form { get; } = new SelectForm()
         {
             DoubleBuffered = true,
             FormBorderStyle = FormBorderStyle.None,
             WindowState = FormWindowState.Maximized,
             Cursor = Cursors.Cross
         };
-        private Graphics gfx;
         private Bitmap bitmap = new Bitmap(Config.PrimaryMonitorResolution.Width, Config.PrimaryMonitorResolution.Height);
         private Point startPoint = new Point();
         private Point endPoint = new Point();
@@ -26,17 +23,31 @@ namespace YAAAA
                 Math.Abs(startPoint.Y - endPoint.Y));
         }
 
+
+
         public Selector()
         {
+            // Create a Graphics object from the Bitmap.
+            using (var gfx = Graphics.FromImage(bitmap))
+            {
+                // Copy a screenshot of the screen onto the Bitmap.
+                gfx.CopyFromScreen(Screen.PrimaryScreen.Bounds.X,
+                                   Screen.PrimaryScreen.Bounds.Y,
+                                   0, 0,
+                                   bitmap.Size,
+                                   CopyPixelOperation.SourceCopy);
+            }
+
+            // Set the form's BackgroundImage property to the Bitmap.
             Form.BackgroundImage = bitmap;
 
-            gfx = Graphics.FromImage(bitmap);
-
-            gfx.CopyFromScreen(Screen.PrimaryScreen.Bounds.X,
-                               Screen.PrimaryScreen.Bounds.Y,
-                               0, 0,
-                               bitmap.Size,
-                               CopyPixelOperation.SourceCopy);
+            Form.KeyDown += (sender, e) =>
+            {
+                if (e.KeyCode == Keys.Escape)
+                {
+                    Form.Close();
+                }
+            };
 
             Form.MouseDown += (sender, e) =>
             {
@@ -53,7 +64,7 @@ namespace YAAAA
                 {
                     endPoint = e.Location;
                     Form.Invalidate();
-                    Debug.WriteLine("MouseMove");
+                    Console.WriteLine("MouseMove");
                 }
             };
 
@@ -62,8 +73,7 @@ namespace YAAAA
                 if (e.Button == MouseButtons.Left)
                 {
                     isSelecting = false;
-                    Debug.WriteLine("MouseUp");
-
+                    Console.WriteLine("MouseUp");
                 }
             };
 
@@ -76,17 +86,15 @@ namespace YAAAA
                 }
             };
 
-
-
             Form.ShowDialog();
 
-            Debug.WriteLine("Selector constructed!");
+            Console.WriteLine("Selector constructed!");
         }
 
         ~Selector()
         {
             Form.Close();
-            Debug.WriteLine("Selector destructed!");
+            Console.WriteLine("Selector destructed!");
         }
     }
 }

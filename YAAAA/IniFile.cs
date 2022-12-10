@@ -2,6 +2,9 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
+#pragma warning disable CS8625
+#pragma warning disable CS8601
+
 namespace YAAAA
 {
     class IniFile   // revision 11
